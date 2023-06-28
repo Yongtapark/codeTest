@@ -59,7 +59,7 @@ class BoardDAOImplTest {
     public void deleteTest() throws Exception{
         //given
         BoardModel delTest = new BoardModel("delTestTitle","context","tester");
-        boardDAO.save(delTest);
+        boardDAO.save(delTest);//
 
         //when
         boardDAO.delete(delTest.getBoardNo());
