@@ -1,5 +1,7 @@
 package com.example.demo.web.board.dao.mybatis;
 
+import com.example.demo.web.board.dto.BoardModelUpdateDto;
+import com.example.demo.web.board.utils.BoardModelCond;
 import com.example.demo.web.model.BoardModel;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -9,7 +11,7 @@ import java.util.Optional;
 
 @Mapper
 public interface BoardModelMapper {
-    BoardModel save(BoardModel boardModel);
+    int save(BoardModel boardModel);
     void update(@Param("board_no") int boardNo,@Param("updateParam") BoardModelUpdateDto boardModelUpdateDto);
 
     List<BoardModel> findAll(BoardModelCond boardModelCond);

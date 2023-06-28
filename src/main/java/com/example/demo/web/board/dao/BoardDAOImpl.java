@@ -1,12 +1,12 @@
 package com.example.demo.web.board.dao;
 
 
-import com.example.demo.web.board.dao.mybatis.BoardModelCond;
+import com.example.demo.web.board.exception.NotBoardFoundException;
+import com.example.demo.web.board.utils.BoardModelCond;
 import com.example.demo.web.board.dao.mybatis.BoardModelMapper;
-import com.example.demo.web.board.dao.mybatis.BoardModelUpdateDto;
+import com.example.demo.web.board.dto.BoardModelUpdateDto;
 import com.example.demo.web.model.BoardModel;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -23,7 +23,7 @@ public class BoardDAOImpl implements BoardDAO {
 	}
 
 	@Override
-	public BoardModel save(BoardModel boardModel) {
+	public int save(BoardModel boardModel) {
 		return boardModelMapper.save(boardModel);
 	}
 

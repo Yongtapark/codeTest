@@ -6,7 +6,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.ImportResource;
 
-@ImportResource("classpath:context/context-import.xml")
+//@ImportResource("classpath:context/context-import.xml")
 @SpringBootApplication(scanBasePackages = {"com.example"})
 public class WebApplication extends SpringBootServletInitializer {
 

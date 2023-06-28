@@ -1,4 +1,4 @@
-package com.example.demo.web.board.dao.mybatis;
+package com.example.demo.web.board.utils;
 
 import lombok.Data;
 

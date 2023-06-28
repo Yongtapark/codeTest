@@ -1,8 +1,8 @@
 package com.example.demo.web.board.dao;
 
 
-import com.example.demo.web.board.dao.mybatis.BoardModelCond;
-import com.example.demo.web.board.dao.mybatis.BoardModelUpdateDto;
+import com.example.demo.web.board.utils.BoardModelCond;
+import com.example.demo.web.board.dto.BoardModelUpdateDto;
 import com.example.demo.web.model.BoardModel;
 
 import java.util.List;
@@ -22,7 +22,7 @@ public interface BoardDAO {
 	 * @param boardModel BoardModel
 	 * @return BoardModel
 	 */
-	BoardModel save(BoardModel boardModel);
+	int save(BoardModel boardModel);
 
 	/**
 	 * 게시글 수정
@@ -38,8 +38,17 @@ public interface BoardDAO {
 	 */
 	Optional<BoardModel> findById(int boardNo);
 
+	/**
+	 * 게시글 전체 조회
+	 * @param boardModelCond BoardModelCond
+	 * @return List<BoardModel>
+	 */
 	List<BoardModel> findAll(BoardModelCond boardModelCond);
 
+	/**
+	 * 게시글 삭제
+	 * @param boardNo int
+	 */
 	void delete(int boardNo);
 
 

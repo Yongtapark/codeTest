@@ -3,7 +3,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.web.board.dao.mybatis.BoardModelMapper">
 
-    <insert id="save" useGeneratedKeys="true" keyProperty="boardNo">
+    <insert id="save"  useGeneratedKeys="true" keyProperty="boardNo">
         insert into board (title, content, reg_name)
         values (#{title}, #{content}, #{regName})
     </insert>
@@ -11,7 +11,7 @@
     <update id="update">
         update board
         set title=#{updateParam.title},
-            text=#{updateParam.text}
+            content=#{updateParam.content}
         where board_no =#{boardNo}
 
     </update>

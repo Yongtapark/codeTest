@@ -1,17 +1,17 @@
-package com.example.demo.web.board.dao.mybatis;
+package com.example.demo.web.board.dto;
 
 import lombok.Data;
 
 @Data
 public class BoardModelUpdateDto {
     private String title;
-    private String text;
+    private String content;
 
     public BoardModelUpdateDto() {
     }
 
-    public BoardModelUpdateDto(String title, String text) {
+    public BoardModelUpdateDto(String title, String content) {
         this.title = title;
-        this.text = text;
+        this.content = content;
     }
 }
