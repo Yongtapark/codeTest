@@ -38,19 +38,24 @@
         ORDER BY board_no DESC
         LIMIT #{pagination.limitStart}, #{pageSize}
     </select>
-
+    <!--데이터 수 카운트-->
     <select id="count" parameterType="com.example.demo.web.board.paging.SearchDto" resultType="int">
         select
             count(*)
         from
             board
+        <where>
+            <if test="search != null and search != ''">
+                AND (title like concat('%',#{search},'%') OR content like concat('%',#{search},'%'))
+            </if>
+        </where>
     </select>
-
+    <!--데이터 개별 삭제-->
     <delete id="delete">
         delete from board
         where board_no=${boardNo}
     </delete>
-
+    <!--데이터 전체 삭제-->
     <delete id="deleteAll">
         delete from board
     </delete>
