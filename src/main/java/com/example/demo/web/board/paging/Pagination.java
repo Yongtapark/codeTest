@@ -15,7 +15,6 @@ public class Pagination {
     private boolean existPrevPage;    // 이전 페이지 존재 여부
     private boolean existNextPage;    // 다음 페이지 존재 여부
 
-    private int currentPage;
 
 
     private int pageSize;
@@ -57,7 +56,7 @@ public class Pagination {
 
 
         // 다음 페이지 존재 여부 확인
-        existNextPage = currentPage < totalPageCount  ;
+        existNextPage = searchDto.getPage() < totalPageCount  ;
 
         pageSize=searchDto.getPageSize();
     }
