@@ -2,6 +2,8 @@ package com.example.demo.web.board.service;
 
 
 import com.example.demo.web.board.dto.BoardModelUpdateDto;
+import com.example.demo.web.board.utils.PagingResponse;
+import com.example.demo.web.board.utils.SearchDto;
 import com.example.demo.web.board.utils.BoardModelCond;
 import com.example.demo.web.model.BoardModel;
 
@@ -51,10 +53,14 @@ public interface BoardService {
 	 */
 	List<BoardModel> findAll(BoardModelCond boardModelCond);
 
+	PagingResponse<BoardModel> findAllPaging(SearchDto searchDto);
+
 	/**
 	 * 게시글 삭제
 	 * @param boardNo int
 	 */
 	void delete(int boardNo);
+
+	public List<BoardModel> getBoardList(int page, int perPageNum);
 
 }

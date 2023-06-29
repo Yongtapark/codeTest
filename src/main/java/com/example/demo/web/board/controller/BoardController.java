@@ -3,6 +3,8 @@ package com.example.demo.web.board.controller;
 
 import com.example.demo.web.board.service.BoardService;
 import com.example.demo.web.board.utils.BoardModelCond;
+import com.example.demo.web.board.utils.PagingResponse;
+import com.example.demo.web.board.utils.SearchDto;
 import com.example.demo.web.model.BoardModel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -36,11 +38,14 @@ public class BoardController {
 	 */
 	@GetMapping(value = "/board/list")
 	public ModelAndView boardList(ModelAndView model,
+								  SearchDto searchDto,
 								  @RequestParam(value = "title",required = false) String title,
 								  @RequestParam(value = "content",required = false) String content) {
-		List<BoardModel> boards = boardService.findAll(new BoardModelCond(title, content));
+		//List<BoardModel> boards = boardService.findAll(new BoardModelCond(title, content));
+		PagingResponse<BoardModel> boards = boardService.findAllPaging(searchDto);
 		model.setViewName("board/list");
-		model.addObject("boards",boards);
+		model.addObject("boards",boards.getList());
+		model.addObject("pagination",boards.getPagination());
 		return model;
 	}
 	

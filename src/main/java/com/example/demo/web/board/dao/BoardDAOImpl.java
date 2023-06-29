@@ -1,6 +1,7 @@
 package com.example.demo.web.board.dao;
 
 
+import com.example.demo.web.board.utils.SearchDto;
 import com.example.demo.web.board.exception.NotBoardFoundException;
 import com.example.demo.web.board.utils.BoardModelCond;
 import com.example.demo.web.board.dao.mybatis.BoardModelMapper;
@@ -10,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Repository
@@ -48,8 +50,28 @@ public class BoardDAOImpl implements BoardDAO {
 	}
 
 	@Override
+	public List<BoardModel> findAll(SearchDto searchDto) {
+		return boardModelMapper.findAll(searchDto);
+	}
+
+	@Override
+	public int count(SearchDto searchDto) {
+		return boardModelMapper.count(searchDto);
+	}
+
+	@Override
+	public List<BoardModel> findAllPaging(Map<String, Integer> paramMap) {
+		return null;
+	}
+
+	@Override
 	public void delete(int boardNo) {
 		boardModelMapper.delete(boardNo);
+	}
+
+	@Override
+	public void deleteAll() {
+		boardModelMapper.deleteAll();
 	}
 
 }

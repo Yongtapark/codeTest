@@ -2,7 +2,7 @@ CREATE TABLE board (
 board_no int AUTO_INCREMENT PRIMARY KEY,
 title VARCHAR(300),
 content TEXT,
-hits INT(11),
+hits INT(11) DEFAULT 0,
 reg_name VARCHAR(100),
 reg_dttm datetime DEFAULT CURRENT_TIMESTAMP
 );

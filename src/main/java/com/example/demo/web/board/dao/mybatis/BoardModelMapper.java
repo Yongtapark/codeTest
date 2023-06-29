@@ -1,6 +1,7 @@
 package com.example.demo.web.board.dao.mybatis;
 
 import com.example.demo.web.board.dto.BoardModelUpdateDto;
+import com.example.demo.web.board.utils.SearchDto;
 import com.example.demo.web.board.utils.BoardModelCond;
 import com.example.demo.web.model.BoardModel;
 import org.apache.ibatis.annotations.Mapper;
@@ -17,7 +18,13 @@ public interface BoardModelMapper {
 
     List<BoardModel> findAll(BoardModelCond boardModelCond);
 
+    List<BoardModel> findAll(SearchDto searchDto);
+
+    int count(SearchDto searchDto);
+
     Optional<BoardModel> findById(int boardNo);
 
     void delete(int boardNo);
+
+    void deleteAll();
 }
