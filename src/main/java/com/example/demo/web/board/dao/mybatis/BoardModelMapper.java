@@ -1,8 +1,8 @@
 package com.example.demo.web.board.dao.mybatis;
 
 import com.example.demo.web.board.dto.BoardModelUpdateDto;
-import com.example.demo.web.board.utils.SearchDto;
-import com.example.demo.web.board.utils.BoardModelCond;
+import com.example.demo.web.board.paging.SearchDto;
+import com.example.demo.web.board.paging.BoardModelCond;
 import com.example.demo.web.model.BoardModel;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;

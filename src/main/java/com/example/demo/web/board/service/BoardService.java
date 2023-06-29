@@ -2,9 +2,9 @@ package com.example.demo.web.board.service;
 
 
 import com.example.demo.web.board.dto.BoardModelUpdateDto;
-import com.example.demo.web.board.utils.PagingResponse;
-import com.example.demo.web.board.utils.SearchDto;
-import com.example.demo.web.board.utils.BoardModelCond;
+import com.example.demo.web.board.paging.PagingResponse;
+import com.example.demo.web.board.paging.SearchDto;
+import com.example.demo.web.board.paging.BoardModelCond;
 import com.example.demo.web.model.BoardModel;
 
 import java.util.List;

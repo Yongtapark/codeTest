@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <head>
 	<style>
@@ -87,16 +86,10 @@
 										<td>${board.boardNo}</td>
 										<td><a href="/board/detail/${board.boardNo}">${board.title}</a></td>
 										<td>${board.hits}</td>
-										<td><fmt:formatDate value="${board.regDttm}" pattern="yyyy-MM-dd HH:mm"/> </td>
+										<td>${board.regDttm}</td>
 										<%--<td>${board.content}</td>--%>
 									</tr>
 								</c:forEach>
-   									<tr>
-   										<td>1</td>
-   										<td><a href="/board/detail/1">제목입니다.</a></td>
-   										<td>0</td>
-   										<td>2021-06-15 10:00</td>
-   									</tr>
    								</tbody>
    							</table>
    						</div>

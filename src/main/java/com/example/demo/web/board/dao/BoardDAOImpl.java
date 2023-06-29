@@ -1,9 +1,9 @@
 package com.example.demo.web.board.dao;
 
 
-import com.example.demo.web.board.utils.SearchDto;
+import com.example.demo.web.board.paging.SearchDto;
 import com.example.demo.web.board.exception.NotBoardFoundException;
-import com.example.demo.web.board.utils.BoardModelCond;
+import com.example.demo.web.board.paging.BoardModelCond;
 import com.example.demo.web.board.dao.mybatis.BoardModelMapper;
 import com.example.demo.web.board.dto.BoardModelUpdateDto;
 import com.example.demo.web.model.BoardModel;
@@ -11,7 +11,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 @Repository

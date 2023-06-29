@@ -1,4 +1,4 @@
-package com.example.demo.web.board.utils;
+package com.example.demo.web.board.paging;
 
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
@@ -51,13 +51,10 @@ public class Pagination {
         // LIMIT 시작 위치 계산
         limitStart = (searchDto.getPage()) * searchDto.getPageSize();
 
-        //현재 페이지
-        currentPage=searchDto.getPage();
-        log.info("currentPage={}",currentPage);
 
         // 이전 페이지 존재 여부 확인
-        existPrevPage = currentPage > 0;
-        log.info("existPrevPage={}",existPrevPage);
+        existPrevPage = searchDto.getPage() > 0;
+
 
         // 다음 페이지 존재 여부 확인
         existNextPage = currentPage < totalPageCount  ;

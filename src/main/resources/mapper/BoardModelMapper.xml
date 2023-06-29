@@ -39,7 +39,7 @@
         LIMIT #{pagination.limitStart}, #{pageSize}
     </select>
 
-    <select id="count" parameterType="com.example.demo.web.board.utils.SearchDto" resultType="int">
+    <select id="count" parameterType="com.example.demo.web.board.paging.SearchDto" resultType="int">
         select
             count(*)
         from

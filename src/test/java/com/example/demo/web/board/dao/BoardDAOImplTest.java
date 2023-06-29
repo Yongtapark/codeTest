@@ -1,13 +1,11 @@
 package com.example.demo.web.board.dao;
 
 import com.example.demo.web.board.exception.NotBoardFoundException;
-import com.example.demo.web.board.utils.BoardModelCond;
+import com.example.demo.web.board.paging.BoardModelCond;
 import com.example.demo.web.model.BoardModel;
 import lombok.extern.slf4j.Slf4j;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.internal.matchers.Not;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,7 +14,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
+
 @SpringBootTest
 @Slf4j
 @Transactional

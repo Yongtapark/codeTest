@@ -3,9 +3,8 @@ package com.example.demo.web.board.controller;
 
 import com.example.demo.web.board.dto.BoardModelUpdateDto;
 import com.example.demo.web.board.service.BoardService;
-import com.example.demo.web.board.utils.BoardModelCond;
-import com.example.demo.web.board.utils.PagingResponse;
-import com.example.demo.web.board.utils.SearchDto;
+import com.example.demo.web.board.paging.PagingResponse;
+import com.example.demo.web.board.paging.SearchDto;
 import com.example.demo.web.model.BoardModel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -15,7 +14,6 @@ import org.springframework.web.servlet.ModelAndView;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
-import java.util.List;
 
 @Controller
 @RequiredArgsConstructor

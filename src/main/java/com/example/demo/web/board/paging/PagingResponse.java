@@ -1,4 +1,4 @@
-package com.example.demo.web.board.utils;
+package com.example.demo.web.board.paging;
 
 import lombok.Getter;
 
