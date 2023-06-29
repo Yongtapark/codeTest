@@ -12,6 +12,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -42,11 +45,10 @@ public class BoardController {
 								  SearchDto searchDto,
 								  @RequestParam(value = "title",required = false) String title,
 								  @RequestParam(value = "content",required = false) String content) {
-		//List<BoardModel> boards = boardService.findAll(new BoardModelCond(title, content));
 		PagingResponse<BoardModel> boards = boardService.findAllPaging(searchDto);
 		model.setViewName("board/list");
-		model.addObject("boards",boards.getList());
-		model.addObject("pagination",boards.getPagination());
+		model.addObject("boards",boards.getList()); //게시물
+		model.addObject("pagination",boards.getPagination()); //페
 		model.addObject("searchDto",searchDto);
 		return model;
 	}
@@ -111,5 +113,13 @@ public class BoardController {
 		boardService.delete(boardNo);
 		return "redirect:/board/list";
 	}
-	
+
+	/**
+	 * LocalDate 를 Date 로 변환하는 메서드
+	 * @param localDateTime LocalDateTime
+	 * @return Date
+	 */
+	public Date convertToDate(LocalDateTime localDateTime) {
+		return Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
+	}
 }

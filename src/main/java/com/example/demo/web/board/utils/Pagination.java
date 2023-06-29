@@ -1,8 +1,10 @@
 package com.example.demo.web.board.utils;
 
 import lombok.Getter;
+import lombok.extern.slf4j.Slf4j;
 
 @Getter
+@Slf4j
 public class Pagination {
 
     private int totalRecordCount;     // 전체 데이터 수
@@ -12,6 +14,9 @@ public class Pagination {
     private int limitStart;           // LIMIT 시작 위치
     private boolean existPrevPage;    // 이전 페이지 존재 여부
     private boolean existNextPage;    // 다음 페이지 존재 여부
+
+    private int currentPage;
+
 
     private int pageSize;
 
@@ -25,7 +30,7 @@ public class Pagination {
     private void calculation(SearchDto searchDto) {
 
         // 전체 페이지 수 계산
-        totalPageCount = ((totalRecordCount - 1) / searchDto.getPageSize()) + 1;
+        totalPageCount = ((totalRecordCount - 1) / searchDto.getPageSize());
 
         // 현재 페이지 번호가 전체 페이지 수보다 큰 경우, 현재 페이지 번호에 전체 페이지 수 저장
         if (searchDto.getPage() > totalPageCount) {
@@ -46,11 +51,16 @@ public class Pagination {
         // LIMIT 시작 위치 계산
         limitStart = (searchDto.getPage()) * searchDto.getPageSize();
 
+        //현재 페이지
+        currentPage=searchDto.getPage();
+        log.info("currentPage={}",currentPage);
+
         // 이전 페이지 존재 여부 확인
-        existPrevPage = startPage != 0;
+        existPrevPage = currentPage > 0;
+        log.info("existPrevPage={}",existPrevPage);
 
         // 다음 페이지 존재 여부 확인
-        existNextPage = (endPage * searchDto.getPageSize()) < totalRecordCount;
+        existNextPage = currentPage < totalPageCount  ;
 
         pageSize=searchDto.getPageSize();
     }

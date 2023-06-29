@@ -1,6 +1,31 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
+<head>
+	<style>
+		.pageInfo{
+			list-style : none;
+			display: inline-block;
+			margin: 50px 0 0 100px;
+		}
+		.pageInfo li{
+			float: left;
+			font-size: 20px;
+			margin-left: 18px;
+			padding: 7px;
+			font-weight: 500;
+		}
+		.pagination-container {
+			display: flex;
+			justify-content: center;
+			width: 100%;
+		}
+		a:link {color:black; text-decoration: none;}
+		a:visited {color:black; text-decoration: none;}
+		a:hover {color:black; text-decoration: underline;}
+	</style>
+</head>
 <html>
 	<head>
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
@@ -62,7 +87,7 @@
 										<td>${board.boardNo}</td>
 										<td><a href="/board/detail/${board.boardNo}">${board.title}</a></td>
 										<td>${board.hits}</td>
-										<td>${board.regDttm}</td>
+										<td><fmt:formatDate value="${board.regDttm}" pattern="yyyy-MM-dd HH:mm"/> </td>
 										<%--<td>${board.content}</td>--%>
 									</tr>
 								</c:forEach>
@@ -80,8 +105,23 @@
    								<a href="/board" class="btn btn-primary">글쓰기</a>
    							</div>
    						</div>
-   					</div>
-   				</div>
+						<div class="pagination-container">
+							<ul id="pageInfo" class="pageInfo">
+								<c:if test="${pagination.existPrevPage}">
+									<li class="pageInfo_btn previous"><a href="/board/list?page=${searchDto.page-1}&search=${searchDto.search}&pageSize=${searchDto.pageSize}">previous</a></li>
+								</c:if>
+
+								<c:forEach var="num" begin="${pagination.startPage}" end="${pagination.endPage}">
+									<li class="pageInfo_btn"><a href="/board/list?page=${num}&search=${searchDto.search}&pageSize=${searchDto.pageSize}">${num+1}</a></li>
+								</c:forEach>
+
+								<c:if test="${pagination.existNextPage}">
+									<li class="pageInfo_btn next"><a href="/board/list?page=${searchDto.page+1}&search=${searchDto.search}&pageSize=${searchDto.pageSize}">next</a></li>
+								</c:if>
+							</ul>
+						</div>
+					</div>
+				</div>
    			</div>
    		</div>
 	</div>
@@ -91,8 +131,10 @@
 	<script type="text/javascript">
 		$(document).ready(function(){
 			$('[data-role="btnSearch"]').click(function(){
+				var page = ${searchDto.page};
+				var pageSize = ${searchDto.pageSize};
 				var search = $('input[name="keyword"]').val();
-				window.location.href = '${pageContext.request.contextPath}/board/list?search=' + search;
+				window.location.href = '${pageContext.request.contextPath}/board/list?page='+ page+'&search='+search+'&pageSize='+pageSize;
 			});
 		});
 
@@ -100,21 +142,22 @@
 		function page(idx){
 			var page = idx;
 			var pageSize = $("#pageSize option:selected").val();
+			var search = $('input[name="keyword"]').val();
 
 			if(pageSize == 10){
-				location.href="${pageContext.request.contextPath}/board/list?page="+page+"&pageSize="+pageSize
+				location.href="${pageContext.request.contextPath}/board/list?search="+search+"&page="+page+"&pageSize="+pageSize
 
 			}else if(pageSize == 20){
-				location.href="${pageContext.request.contextPath}/board/list?page="+page+"&pageSize="+pageSize
+				location.href="${pageContext.request.contextPath}/board/list?search="+search+"&page="+page+"&pageSize="+pageSize
 
 			}else if(pageSize == 30){
-				location.href="${pageContext.request.contextPath}/board/list?page="+page+"&pageSize="+pageSize
+				location.href="${pageContext.request.contextPath}/board/list?search="+search+"&page="+page+"&pageSize="+pageSize
 
 			}else if(pageSize == 40){
-				location.href="${pageContext.request.contextPath}/board/list?page="+page+"&pageSize="+pageSize
+				location.href="${pageContext.request.contextPath}/board/list?search="+search+"&page="+page+"&pageSize="+pageSize
 
 			}else if(pageSize == 50){
-				location.href="${pageContext.request.contextPath}/board/list?page="+page+"&pageSize="+pageSize
+				location.href="${pageContext.request.contextPath}/board/list?search="+search+"&page="+page+"&pageSize="+pageSize
 
 			}
 		}

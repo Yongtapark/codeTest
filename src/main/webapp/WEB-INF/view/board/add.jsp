@@ -25,28 +25,36 @@
    								<tbody>
    									<tr>
    										<td>제목</td>
-   										<td><input type="text" name="title" value="${boardModel.title}"></td>
    									</tr>
 									<tr>
-										<td>글쓴이</td>
+										<td><input type="text" name="title" value="${boardModel.title}"></td>
+									</tr>
+									<tr>
+										<td>글쓴이</td><br>
+									</tr>
+									<tr>
 										<td><input type="text" name="regName" value="${boardModel.regName}"></td>
 									</tr>
+
    									<tr>
-										<td>내용</td>
-   										<td colspan="2"><input type="text" name="content" value="${boardModel.content}"><c:out value="${boardModel.content}" /></td>
+										<td>내용</td><br>
    									</tr>
+								<tr>
+									<td colspan="2"><textarea name="content" value="${boardModel.content}"></textarea></td>
+								</tr>
+
    								</tbody>
    							</table>
 								<div class="col-3">
 								<input type="submit" class="btn btn-primary" value="등록하기">
 								</div>
 							</form>
-   						</div>
-   						<div class="row">
-   							<div class="col-3">
-   								<a href="/board/list" class="btn btn-primary">목록으로</a>
-   							</div>
-   						</div>
+							<div class="row">
+								<div class="col-3">
+									<a href="/board/list" class="btn btn-primary">목록으로</a>
+								</div>
+							</div>
+						</div>
    					</div>
    				</div>
    			</div>
