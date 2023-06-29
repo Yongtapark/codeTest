@@ -1,8 +1,10 @@
 package com.example.demo.web.board.dao;
 
 import com.example.demo.web.board.exception.NotBoardFoundException;
+import com.example.demo.web.board.utils.BoardModelCond;
 import com.example.demo.web.model.BoardModel;
 import lombok.extern.slf4j.Slf4j;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.internal.matchers.Not;
@@ -10,11 +12,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 @Slf4j
+@Transactional
 class BoardDAOImplTest {
 
     @Autowired BoardDAO boardDAO;
@@ -59,13 +64,33 @@ class BoardDAOImplTest {
     public void deleteTest() throws Exception{
         //given
         BoardModel delTest = new BoardModel("delTestTitle","context","tester");
-        boardDAO.save(delTest);
+        boardDAO.save(delTest);//
 
         //when
         boardDAO.delete(delTest.getBoardNo());
 
         //then
         assertThatThrownBy(()->boardDAO.findById(delTest.getBoardNo()).orElseThrow(NotBoardFoundException::new)).isInstanceOf(NotBoardFoundException.class);
+    }
+
+    @Test
+    public void findAllTest() throws Exception{
+        //given
+        BoardModel boardModel = new BoardModel("selTestTitle", "context", "tester");
+        boardDAO.save(boardModel);
+
+        //when
+        List<BoardModel> findAll = boardDAO.findAll(new BoardModelCond());
+
+        List<BoardModel> findAllSearch = boardDAO.findAll(new BoardModelCond("1",null));
+        //then
+        /*전체조회*/
+        assertThat(findAll.size()).isEqualTo(4);
+        assertThat(findAll).contains(boardDAO.findById(boardModel.getBoardNo()).get());
+        /*검색*/
+        assertThat(findAllSearch.size()).isEqualTo(1);
+        assertThat(findAllSearch).contains(boardDAO.findById(boardModel1.getBoardNo()).get());
+
     }
 
 

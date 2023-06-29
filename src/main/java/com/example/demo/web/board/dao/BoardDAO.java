@@ -1,11 +1,13 @@
 package com.example.demo.web.board.dao;
 
 
+import com.example.demo.web.board.utils.SearchDto;
 import com.example.demo.web.board.utils.BoardModelCond;
 import com.example.demo.web.board.dto.BoardModelUpdateDto;
 import com.example.demo.web.model.BoardModel;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 public interface BoardDAO {
@@ -32,6 +34,12 @@ public interface BoardDAO {
 	void update(int boardNo, BoardModelUpdateDto boardModelUpdateDto);
 
 	/**
+	 * 조회수 증가
+	 * @param boardNo
+	 */
+	void addHits(int boardNo);
+
+	/**
 	 * 게시글 조회
 	 * @param boardNo int
 	 * @return Optional<BoardModel>
@@ -44,12 +52,18 @@ public interface BoardDAO {
 	 * @return List<BoardModel>
 	 */
 	List<BoardModel> findAll(BoardModelCond boardModelCond);
+	List<BoardModel> findAll(SearchDto searchDto);
+
+	int count(SearchDto searchDto);
+
 
 	/**
 	 * 게시글 삭제
 	 * @param boardNo int
 	 */
 	void delete(int boardNo);
+
+	void deleteAll();
 
 
 
