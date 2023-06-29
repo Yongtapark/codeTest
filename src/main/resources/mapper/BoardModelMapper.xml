@@ -11,6 +11,7 @@
     <update id="update">
         update board
         set title=#{updateParam.title},
+            reg_name=#{updateParam.regName},
             content=#{updateParam.content}
         where board_no =#{boardNo}
 

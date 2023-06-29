@@ -77,7 +77,7 @@
    						</div>
    						<div class="row">
    							<div class="col-3">
-   								<a href="#" class="btn btn-primary">글쓰기</a>
+   								<a href="/board" class="btn btn-primary">글쓰기</a>
    							</div>
    						</div>
    					</div>

@@ -13,7 +13,7 @@ import java.util.Optional;
 @Mapper
 public interface BoardModelMapper {
     int save(BoardModel boardModel);
-    void update(@Param("board_no") int boardNo,@Param("updateParam") BoardModelUpdateDto boardModelUpdateDto);
+    void update(@Param("boardNo") int boardNo,@Param("updateParam") BoardModelUpdateDto boardModelUpdateDto);
     void addHits(int boardNo);
 
     List<BoardModel> findAll(BoardModelCond boardModelCond);

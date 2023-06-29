@@ -1,6 +1,7 @@
 package com.example.demo.web.board.controller;
 
 
+import com.example.demo.web.board.dto.BoardModelUpdateDto;
 import com.example.demo.web.board.service.BoardService;
 import com.example.demo.web.board.utils.BoardModelCond;
 import com.example.demo.web.board.utils.PagingResponse;
@@ -64,17 +65,39 @@ public class BoardController {
 
 	/*수정*/
 
+	/**
+	 * 게시판 글 추가 (GET)
+	 * @param model ModelAndView
+	 * @return ModelAndView
+	 */
 	@GetMapping(value = "/board")
-	public ModelAndView boardGetWrite(ModelAndView model, @ModelAttribute BoardModel boardModel) {
-		model.setViewName("/board/detail");
+	public ModelAndView boardGetWrite(ModelAndView model) {
+		model.setViewName("/board/add");
 		return model;
 	}
 
+	/**
+	 * 게시판 글 추가 (POST)
+	 * @param boardModel BoardModel
+	 * @return "redirect:/board/list"
+	 */
 	@PostMapping(value = "/board")
-	public ModelAndView boardPostWrite(ModelAndView model, @ModelAttribute BoardModel boardModel) {
-		model.addObject(boardService.save(boardModel));
-		model.setViewName("/board/detail");
+	public String boardPostWrite(@ModelAttribute("boardModel") BoardModel boardModel) {
+		boardService.save(boardModel);
+		return "redirect:/board/list";
+	}
+
+	@GetMapping(value = "/board/{boardNo}")
+	public ModelAndView boardGetUpdate(ModelAndView model,BoardModel boardModel) {
+		model.addObject("boardModel", boardService.selectBoardDetail(boardModel));
+		model.setViewName("/board/update");
 		return model;
+	}
+
+	@PostMapping(value = "/board/{boardNo}")
+	public String boardPostUpdate(@PathVariable int boardNo, ModelAndView model,BoardModel boardModel) {
+		boardService.update(boardNo,new BoardModelUpdateDto(boardModel.getTitle(),boardModel.getRegName(),boardModel.getContent()));
+		return "redirect:/board/list";
 	}
 
 	/**
