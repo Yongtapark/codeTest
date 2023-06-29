@@ -87,6 +87,12 @@ public class BoardController {
 		return "redirect:/board/list";
 	}
 
+	/**
+	 * 게시판 글 수정 (GET)
+	 * @param model ModelAndView
+	 * @param boardModel BoardModel
+	 * @return model
+	 */
 	@GetMapping(value = "/board/{boardNo}")
 	public ModelAndView boardGetUpdate(ModelAndView model,BoardModel boardModel) {
 		model.addObject("boardModel", boardService.selectBoardDetail(boardModel));
@@ -94,8 +100,14 @@ public class BoardController {
 		return model;
 	}
 
+	/**
+	 * 게시글 글 수정 (POST)
+	 * @param boardNo int
+	 * @param boardModel BoardModel
+	 * @return "redirect:/board/list"
+	 */
 	@PostMapping(value = "/board/{boardNo}")
-	public String boardPostUpdate(@PathVariable int boardNo, ModelAndView model,BoardModel boardModel) {
+	public String boardPostUpdate(@PathVariable int boardNo,BoardModel boardModel) {
 		boardService.update(boardNo,new BoardModelUpdateDto(boardModel.getTitle(),boardModel.getRegName(),boardModel.getContent()));
 		return "redirect:/board/list";
 	}
@@ -110,14 +122,5 @@ public class BoardController {
 		System.out.println("boardNos = " + boardNo);
 		boardService.delete(boardNo);
 		return "redirect:/board/list";
-	}
-
-	/**
-	 * LocalDate 를 Date 로 변환하는 메서드
-	 * @param localDateTime LocalDateTime
-	 * @return Date
-	 */
-	public Date convertToDate(LocalDateTime localDateTime) {
-		return Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
 	}
 }

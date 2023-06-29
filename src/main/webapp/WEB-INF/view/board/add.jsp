@@ -45,14 +45,12 @@
 
    								</tbody>
    							</table>
-								<div class="col-3">
-								<input type="submit" class="btn btn-primary" value="등록하기">
-								</div>
+										<div class="col-3">
+										<input type="submit" class="btn btn-primary" value="등록하기">   <a href="/board/list" class="btn btn-primary">목록으로</a>
+										</div>
 							</form>
 							<div class="row">
-								<div class="col-3">
-									<a href="/board/list" class="btn btn-primary">목록으로</a>
-								</div>
+
 							</div>
 						</div>
    					</div>
