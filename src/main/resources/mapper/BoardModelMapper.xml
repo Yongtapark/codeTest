@@ -29,16 +29,13 @@
     <select id="findAll" resultType="BoardModel">
         select *
         from board
+        <where>
+            <if test="search != null and search != ''">
+                AND (title like concat('%',#{search},'%') OR content like concat('%',#{search},'%'))
+            </if>
+        </where>
         ORDER BY board_no DESC
-        LIMIT #{pagination.limitStart}, #{recordSize}
-        <!--<where>
-            <if test="title != null and title != ''">
-                and title like concat('%',#{title},'%')
-            </if>
-            <if test="content != null and content != ''">
-                and content like concat('%',${content},'%')
-            </if>
-        </where>-->
+        LIMIT #{pagination.limitStart}, #{pageSize}
     </select>
 
     <select id="count" parameterType="com.example.demo.web.board.utils.SearchDto" resultType="int">

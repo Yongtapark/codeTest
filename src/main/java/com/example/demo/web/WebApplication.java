@@ -23,7 +23,6 @@ public class WebApplication extends SpringBootServletInitializer {
 		app.run(args);
 	}
 	@Bean
-
 	public InternalResourceViewResolver setupViewResolver() {
 
 		InternalResourceViewResolver resolver = new InternalResourceViewResolver();

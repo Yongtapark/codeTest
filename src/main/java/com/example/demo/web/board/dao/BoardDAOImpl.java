@@ -59,10 +59,6 @@ public class BoardDAOImpl implements BoardDAO {
 		return boardModelMapper.count(searchDto);
 	}
 
-	@Override
-	public List<BoardModel> findAllPaging(Map<String, Integer> paramMap) {
-		return null;
-	}
 
 	@Override
 	public void delete(int boardNo) {

@@ -7,6 +7,7 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
 		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 	</head>
+	<body>
 	<div class="wrap">
    		<div class="row">
    			<div class="col-xs-12 col-sm-12 col-md-12">
@@ -21,7 +22,7 @@
    							</div>
    							<div class="form-group form-row">
    								<div class="input-group">
-   									<input class="form-control" type="text" name="searchText" placeholder="제목 또는 내용 검색" />
+   									<input class="form-control" type="text" name="keyword" placeholder="제목 또는 내용 검색" />
    								</div>
    								<div class="pl10">
    									<button type="button" data-role="btnSearch" class="btn btn-primary">검색</button>
@@ -36,12 +37,12 @@
              		<div class="card-body">
              			<div class="row mb-3">
 	          				<div class="col-3">
-               					<select class="form-control" name="pageSize">
-									<option value="10">10개씩 보기</option>
-									<option value="20">20개씩 보기</option>
-									<option value="30">30개씩 보기</option>
-									<option value="40">40개씩 보기</option>
-									<option value="50">50개씩 보기</option>
+               					<select class="form-control" id="pageSize" onchange="page(${searchDto.page})">
+									<option value="10"<c:if test="${searchDto.pageSize == 10}">selected="selected"</c:if>> 10개씩 보기</option>
+									<option value="20"<c:if test="${searchDto.pageSize == 20}">selected="selected"</c:if>> 20개씩 보기</option>
+									<option value="30"<c:if test="${searchDto.pageSize == 30}">selected="selected"</c:if>> 30개씩 보기</option>
+									<option value="40"<c:if test="${searchDto.pageSize == 40}">selected="selected"</c:if>> 40개씩 보기</option>
+									<option value="50"<c:if test="${searchDto.pageSize == 50}">selected="selected"</c:if>> 50개씩 보기</option>
 								</select>
                				</div>
                			</div>
@@ -84,5 +85,39 @@
    			</div>
    		</div>
 	</div>
+	</body>
+	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('[data-role="btnSearch"]').click(function(){
+				var search = $('input[name="keyword"]').val();
+				window.location.href = '${pageContext.request.contextPath}/board/list?search=' + search;
+			});
+		});
 
+		/*한페이지당 게시물 */
+		function page(idx){
+			var page = idx;
+			var pageSize = $("#pageSize option:selected").val();
+
+			if(pageSize == 10){
+				location.href="${pageContext.request.contextPath}/board/list?page="+page+"&pageSize="+pageSize
+
+			}else if(pageSize == 20){
+				location.href="${pageContext.request.contextPath}/board/list?page="+page+"&pageSize="+pageSize
+
+			}else if(pageSize == 30){
+				location.href="${pageContext.request.contextPath}/board/list?page="+page+"&pageSize="+pageSize
+
+			}else if(pageSize == 40){
+				location.href="${pageContext.request.contextPath}/board/list?page="+page+"&pageSize="+pageSize
+
+			}else if(pageSize == 50){
+				location.href="${pageContext.request.contextPath}/board/list?page="+page+"&pageSize="+pageSize
+
+			}
+		}
+
+	</script>
 </html>

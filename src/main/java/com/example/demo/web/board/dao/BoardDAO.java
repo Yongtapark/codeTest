@@ -56,8 +56,6 @@ public interface BoardDAO {
 
 	int count(SearchDto searchDto);
 
-	List<BoardModel> findAllPaging(Map<String, Integer> paramMap);
-
 
 	/**
 	 * 게시글 삭제

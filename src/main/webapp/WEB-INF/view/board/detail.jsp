@@ -40,6 +40,9 @@
    							<div class="col-3">
    								<a href="/board/list" class="btn btn-primary">목록으로</a>
    							</div>
+							<div class="col-3">
+								<a href="/board/delete/${boardDetail.boardNo}" class="btn btn-primary">삭제하기</a>
+							</div>
    						</div>
    					</div>
    				</div>
