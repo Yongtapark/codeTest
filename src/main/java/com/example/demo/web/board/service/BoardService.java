@@ -39,6 +39,12 @@ public interface BoardService {
 	Optional<BoardModel> findById(int boardNo);
 
 	/**
+	 * 조회수 증가
+	 * @param boardNo
+	 */
+	void addHits(int boardNo);
+
+	/**
 	 * 게시글 전체 조회
 	 * @param boardModelCond BoardModelCond
 	 * @return List<BoardModel>

@@ -39,7 +39,7 @@ public class BoardController {
 								  @RequestParam(value = "title",required = false) String title,
 								  @RequestParam(value = "content",required = false) String content) {
 		List<BoardModel> boards = boardService.findAll(new BoardModelCond(title, content));
-		model.setViewName("/board/list");
+		model.setViewName("board/list");
 		model.addObject("boards",boards);
 		return model;
 	}

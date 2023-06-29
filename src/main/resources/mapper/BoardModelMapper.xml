@@ -16,6 +16,10 @@
 
     </update>
 
+    <update id="addHits">
+        update board set hits = hits + 1 where board_no=#{boardNo}
+    </update>
+
     <select id="findById" resultType="BoardModel">
         select *
         from board

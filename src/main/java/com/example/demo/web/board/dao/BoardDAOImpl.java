@@ -33,6 +33,11 @@ public class BoardDAOImpl implements BoardDAO {
 	}
 
 	@Override
+	public void addHits(int boardNo) {
+		boardModelMapper.addHits(boardNo);
+	}
+
+	@Override
 	public Optional<BoardModel> findById(int boardNo) {
 		return boardModelMapper.findById(boardNo);
 	}

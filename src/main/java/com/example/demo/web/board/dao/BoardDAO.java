@@ -32,6 +32,12 @@ public interface BoardDAO {
 	void update(int boardNo, BoardModelUpdateDto boardModelUpdateDto);
 
 	/**
+	 * 조회수 증가
+	 * @param boardNo
+	 */
+	void addHits(int boardNo);
+
+	/**
 	 * 게시글 조회
 	 * @param boardNo int
 	 * @return Optional<BoardModel>

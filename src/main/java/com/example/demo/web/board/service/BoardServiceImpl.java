@@ -21,7 +21,9 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public BoardModel selectBoardDetail(BoardModel boardModel) {
-		return boardDAO.selectBoardDetail(boardModel);
+		addHits(boardModel.getBoardNo());
+		BoardModel findBoard = boardDAO.selectBoardDetail(boardModel);
+		return findBoard;
 	}
 
 	@Override
@@ -37,6 +39,11 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public Optional<BoardModel> findById(int boardNo) {
 		return boardDAO.findById(boardNo);
+	}
+
+	@Override
+	public void addHits(int boardNo) {
+		boardDAO.addHits(boardNo);
 	}
 
 	@Override
