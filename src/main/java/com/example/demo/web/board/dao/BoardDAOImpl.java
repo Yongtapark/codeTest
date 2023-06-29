@@ -19,7 +19,7 @@ public class BoardDAOImpl implements BoardDAO {
 	private final BoardModelMapper boardModelMapper;
 	@Override
 	public BoardModel selectBoardDetail(BoardModel boardModel) {
-		return null;
+		return findById(boardModel.getBoardNo()).orElseThrow(NotBoardFoundException::new);
 	}
 
 	@Override
